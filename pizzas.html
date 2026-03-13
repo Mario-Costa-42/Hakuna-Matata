@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizzas</title>
+  <link rel="icon" type="image/x-icon" href="./assets/pizza.png">
+  <link rel="stylesheet" href="pizzas.css" />
+</head>
+
+<body>
+  <div class="top-bar">
+    <a href="./menu.html">
+      <img src="./assets/arrow_back.svg" alt="Voltar" />
+    </a>
+    <h1 style="font-size: 40px;">Pizzas</h1>
+  </div>
+
+  <div class="card">
+    <div class="section-label">
+      <h2 style="text-align: center;">Tamanho</h2>
+    </div>
+    <select class="size-select" id="sizeSelect" onchange="updatePrice()">
+      <option value="Pequena" data-price-base="29.90">PIZZA PEQUENA – 6 FATIAS 25CM</option>
+      <option value="Média"   data-price-base="39.90" selected>PIZZA GRANDE – 8 FATIAS 35CM</option>
+      <option value="Grande"  data-price-base="49.90">PIZZA FAMÍLIA – 12 FATIAS 45CM</option>
+    </select>
+
+    <div class="sabores-row">
+      <button class="sabores-btn" onclick="changeSabores(-1)">−</button>
+      <span class="sabores-label" id="saboresLabel">1 SABOR</span>
+      <button class="sabores-btn" onclick="changeSabores(1)">+</button>
+    </div>
+
+    <div class="pizza-wrapper">
+      <div class="pizza-circle" id="pizzaCircle"></div>
+    </div>
+
+    <div id="selectedFlavorsBox" style="display:none; margin-bottom:16px;">
+      <div class="section-label">Sabores selecionados</div>
+      <div id="selectedFlavorsList"></div>
+    </div>
+
+    <div class="price-display">
+      <div class="price-label">PREÇO DA PIZZA</div>
+      <div class="price-value" id="priceDisplay">R$ 0,00</div>
+    </div>
+
+    <!-- <button class="btn-borda" onclick="openBorda()">
+      <span>⭐ Escolher Borda</span>
+      <span class="btn-borda-right" id="bordaLabel">Sem borda</span>
+    </button> -->
+  </div>
+
+  <div class="bottom-bar">
+    <button class="btn-adicionar" onclick="adicionarCarrinho()">🛒 Adicionar ao Carrinho</button>
+  </div>
+
+  <!-- Flavor picker -->
+  <div class="flavor-picker" id="flavorPicker">
+    <div class="flavor-picker-sheet">
+      <div class="flavor-sheet-header">
+        <button class="flavor-cancel-icon" onclick="closeFlavor()">✕</button>
+        <div class="flavor-sheet-drag"></div>
+        <div class="flavor-picker-title" id="flavorPickerTitle">SELECIONE UM SABOR</div>
+        <div class="flavor-search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="6"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
+          </svg>
+          <input class="flavor-search" id="flavorSearch" type="text" placeholder="Pesquisar sabor..." oninput="filterFlavors()" />
+        </div>
+        <div class="flavor-category">✓ TRADICIONAIS</div>
+      </div>
+      <div class="flavor-list-scroll" id="flavorList"></div>
+      <button class="flavor-close" onclick="closeFlavor()">CONFIRMAR</button>
+    </div>
+  </div>
+
+  <!-- Borda picker -->
+  <!-- <div class="borda-picker" id="bordaPicker">
+    <div class="flavor-picker-sheet">
+      <div class="flavor-sheet-header">
+        <div class="flavor-sheet-drag"></div>
+        <div class="flavor-picker-title">ESCOLHA A BORDA</div>
+      </div>
+      <div class="flavor-list-scroll" id="bordaList"></div>
+      <button class="flavor-close" onclick="closeBorda()">CONFIRMAR</button>
+    </div>
+  </div> -->
+
+
+  <script src="pizzas.js"></script>
+  <script src="utils.js"></script>
+</body>
+</html>

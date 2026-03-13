@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas</title>
+    <link rel="icon" type="image/x-icon" href="./assets/pizza.png">
+    <link rel="stylesheet" href="bebidas.css" />
+</head>
+<body>
+
+    <header>
+        <a href="./menu.html">
+            <svg id="home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </a>
+        <h1>Bebidas</h1>
+    </header>
+
+    <div class="container">
+        
+        <h3 class="category-title">Refrigerantes - 2 Litros</h3>
+
+        <div class="item-card">
+            <div class="item-info">
+                <span class="item-name">Coca-Cola </span>
+                <span class="price item-price">R$ 18,00</span>
+            </div>
+            <div class="quantity-control">
+                <button type="button" onclick="changeQuantity(this, -1)">-</button>
+                <span>0</span>
+                <button type="button" onclick="changeQuantity(this, 1)">+</button>
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="item-info">
+                <span class="item-name">Guaraná Mantiqueira </span>
+                <span class="price item-price">R$ 12,00</span>
+            </div>
+            <div class="quantity-control">
+                <button type="button" onclick="changeQuantity(this, -1)">-</button>
+                <span>0</span>
+                <button type="button" onclick="changeQuantity(this, 1)">+</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="cart-bar">
+        <button class="btn-carrinho" onclick="adicionarCarrinho()">
+            🛒 Adicionar ao Carrinho
+        </button>
+    </div>
+
+    <script>
+        function changeQuantity(button, amount) {
+            let span = button.parentElement.querySelector('span');
+            let value = parseInt(span.textContent) + amount;
+            if (value < 0) value = 0;
+            span.textContent = value;
+        }
+
+        window.onload = function () {
+            // Check for Utils function presence
+            if (typeof atualizarBadgeCarrinho === 'function') {
+                atualizarBadgeCarrinho();
+            }
+
+            let editIndex = localStorage.getItem("editarIndex");
+            if (editIndex !== null) {
+                let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+                let item = carrinho[editIndex];
+
+                // Check if the item being edited is a Drink
+                if (item && item.produto === "Bebidas") {
+                    document.querySelectorAll('.item-card').forEach(card => {
+                        let nome = card.querySelector('.item-name').textContent;
+                        if (item.nome === nome) {
+                            card.querySelector('.quantity-control span').textContent = item.quantidade;
+                        }
+                    });
+
+                    document.querySelector(".btn-carrinho").textContent = "Salvar Alterações";
+                }
+            }
+        };
+
+        function adicionarCarrinho() {
+            let items = document.querySelectorAll('.item-card');
+            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            let editIndex = localStorage.getItem("editarIndex");
+
+            // Remove old item if editing
+            if (editIndex !== null) {
+                let itemBeingEdited = carrinho[editIndex];
+                if(itemBeingEdited && itemBeingEdited.produto === "Bebidas"){
+                     carrinho.splice(editIndex, 1);
+                }
+                localStorage.removeItem("editarIndex");
+            }
+
+            items.forEach(card => {
+                let quantidade = parseInt(card.querySelector('.quantity-control span').textContent);
+                let nome = card.querySelector('.item-name').textContent;
+                let precoTexto = card.querySelector('.price').textContent.replace("R$", "").replace(",", ".").trim();
+                let preco = parseFloat(precoTexto);
+
+                if (quantidade > 0) {
+                    let subtotal = quantidade * preco;
+                    carrinho.push({
+                        produto: "Bebidas", // Saved as Bebidas
+                        nome: nome,
+                        quantidade: quantidade,
+                        preco: preco,
+                        subtotal: subtotal
+                    });
+                }
+            });
+
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            window.location.href = "carrinho.html";
+        }
+    </script>
+
+    <script src="utils.js"></script>
+
+</body>
+</html> 

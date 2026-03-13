@@ -1,0 +1,307 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #8B0000;
+      min-height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Top bar ── */
+    .top-bar {
+      width: 100%; max-width: 500px;
+      display: flex; align-items: center;
+      padding: 20px 16px 10px; gap: 12px;
+    }
+    .top-bar a { display: flex; align-items: center; }
+    .top-bar img { width: 24px; }
+    .top-bar h1 {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: #fff; flex: 1; text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Main card ── */
+    .card {
+      width: 100%; max-width: 500px;
+      padding: 10px 16px 100px;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: #fff; margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* ── Size selector ── */
+    .size-select {
+      width: 100%; background: #111; color: #fff;
+      font-family: 'Lato', sans-serif; font-size: 0.9rem;
+      font-weight: 600; border: none;
+      border-radius: 14px; padding: 14px 16px; cursor: pointer;
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23fff' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
+      margin-bottom: 12px;
+    }
+    .size-select option { background: #111; }
+
+    /* ── Sabores counter ── */
+    .sabores-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #111; border-radius: 14px;
+      padding: 10px 14px; margin-bottom: 20px;
+    }
+    .sabores-btn {
+      background: none; border: 2px solid #c0392b; color: #fff;
+      font-size: 1.1rem; font-weight: 700;
+      cursor: pointer; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: background 0.15s;
+      line-height: 1;
+    }
+    .sabores-btn:hover { background: rgba(192,57,43,0.3); }
+    .sabores-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem; font-weight: 700; color: #fff;
+    }
+
+    /* ── Pizza visual ── */
+    .pizza-wrapper {
+      display: flex; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .pizza-circle {
+      width: 220px; height: 220px; border-radius: 50%;
+      position: relative; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+    .pizza-circle::before {
+      content: ''; position: absolute; inset: 0;
+      border-radius: 50%; border: 14px solid #8B4513;
+      z-index: 8; pointer-events: none;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+    }
+
+    /* ── Selected flavors summary ── */
+    .selected-flavor-card {
+      display: flex; align-items: center; gap: 12px;
+      background: #111; border-radius: 14px;
+      padding: 14px 16px; margin-bottom: 10px;
+      animation: slideIn 0.2s ease;
+    }
+    .selected-flavor-card:last-child { margin-bottom: 0; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .selected-half-badge {
+      font-family: 'Lato', sans-serif; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 1px;
+      background: #c0392b; color: #fff;
+      padding: 3px 8px; border-radius: 20px;
+      flex-shrink: 0; white-space: nowrap;
+    }
+    .selected-flavor-thumb {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: radial-gradient(circle at 40% 35%, #d4a44c 0%, #c8962e 25%, #b5430a 50%, #8b2500 75%, #5a1500 100%);
+      position: relative; overflow: hidden;
+    }
+    .selected-flavor-thumb::before {
+      content: ''; position: absolute; inset: 5px; border-radius: 50%;
+      background: radial-gradient(ellipse at 45% 40%, #f0c040 0%, #e8a820 40%, #c07818 70%, transparent 100%);
+      opacity: 0.85;
+    }
+    .selected-flavor-thumb::after {
+      content: ''; position: absolute; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--topping-color, #8b2500);
+      top: 9px; left: 12px;
+      box-shadow: 8px 6px 0 var(--topping-color, #8b2500), -2px 11px 0 var(--topping-color, #8b2500);
+    }
+    .selected-flavor-text { flex: 1; min-width: 0; }
+    .selected-flavor-name {
+      font-size: 0.95rem; font-weight: 700; color: #fff;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .selected-flavor-desc {
+      font-size: 0.72rem; color: #aaa; margin-top: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .selected-flavor-price {
+      font-size: 0.88rem; color: #e67e22;
+      font-weight: 700; flex-shrink: 0;
+    }
+    .selected-flavor-edit {
+      background: none; border: 1px solid #444; color: #aaa;
+      border-radius: 6px; padding: 4px 8px; font-size: 0.7rem;
+      cursor: pointer; flex-shrink: 0; transition: border-color 0.15s, color 0.15s;
+    }
+    .selected-flavor-edit:hover { border-color: #c0392b; color: #fff; }
+    .selected-flavor-remove {
+      background: none; border: 1px solid #5a1a1a; color: #c0392b;
+      border-radius: 6px; padding: 4px 7px; font-size: 0.75rem;
+      cursor: pointer; flex-shrink: 0; transition: background 0.15s, color 0.15s;
+      font-weight: bold;
+    }
+    .selected-flavor-remove:hover { background: #c0392b; color: #fff; }
+
+    /* ── Price display ── */
+    .price-display {
+      text-align: center; margin-bottom: 14px;
+    }
+    .price-display .price-label { font-size: 0.7rem; letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+    .price-display .price-value { font-size: 1.8rem; font-weight: 700; color: #fff; }
+
+    /* ── Borda button ── */
+    .btn-borda {
+      width: 100%; background: #111; border: none;
+      color: #fff; border-radius: 14px; padding: 14px 16px;
+      font-family: 'Lato', sans-serif; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px; transition: background 0.15s;
+    }
+    .btn-borda:hover { background: #1a1a1a; }
+    .btn-borda-right { color: #aaa; font-size: 0.85rem; font-weight: 400; }
+
+    /* ── Bottom bar ── */
+    .bottom-bar {
+      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 100%; max-width: 500px;
+      background: #8B0000; padding: 12px 16px 28px; z-index: 50;
+    }
+    .btn-adicionar {
+      width: 100%; background: #006400; color: #fff; border: none;
+      border-radius: 30px; padding: 16px;
+      font-family: 'Lato', sans-serif; font-size: 1rem;
+      font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; transition: filter 0.2s, transform 0.15s;
+    }
+    .btn-adicionar:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-adicionar:active { transform: scale(0.98); }
+
+    /* ── Flavor picker ── */
+    .flavor-picker {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85); z-index: 100;
+      align-items: flex-end; justify-content: center;
+    }
+    .flavor-picker.open { display: flex; }
+    .flavor-picker-sheet {
+      background: #181818; width: 100%; max-width: 500px;
+      border-radius: 20px 20px 0 0; padding: 0 0 32px;
+      max-height: 82vh; display: flex; flex-direction: column;
+    }
+    .flavor-sheet-header { padding: 18px 18px 0; flex-shrink: 0; }
+
+    .flavor-sheet-header{
+  position:relative;
+}
+
+.flavor-cancel-icon{
+  position:absolute;
+  right:18px;
+  top:18px;
+  background:none;
+  border:none;
+  color:#aaa;
+  font-size:20px;
+  cursor:pointer;
+}
+
+    .flavor-sheet-drag {
+      width: 40px; height: 4px; background: #444;
+      border-radius: 4px; margin: 0 auto 14px;
+    }
+    .flavor-picker-title {
+      font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 1px; margin-bottom: 14px; color: #fff;
+      text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+    }
+    .flavor-picker-title::before {
+      content: ''; display: inline-block;
+      width: 3px; height: 16px; background: #c0392b;
+      border-radius: 2px; flex-shrink: 0;
+    }
+    .flavor-search-wrap { position: relative; margin-bottom: 14px; }
+    .flavor-search-wrap svg {
+      position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); width: 16px; height: 16px;
+    }
+    .flavor-search {
+      width: 100%; background: #252525; border: none;
+      border-radius: 10px; padding: 10px 12px 10px 36px;
+      color: #fff; font-size: 0.88rem; font-family: 'Lato', sans-serif; outline: none;
+    }
+    .flavor-search::placeholder { color: #555; }
+    .flavor-category {
+      font-family: 'Lato', sans-serif; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1px; color: #c0392b; padding: 2px 0 10px;
+    }
+    .flavor-list-scroll { overflow-y: auto; flex: 1; padding: 0 18px; }
+    .flavor-option {
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px 6px; cursor: pointer;
+      border-bottom: 1px solid #252525; transition: padding-left 0.1s;
+    }
+    .flavor-option:last-child { border-bottom: none; }
+    .flavor-option:hover { padding-left: 10px; }
+    .flavor-option.selected .flavor-thumb { box-shadow: 0 0 0 3px #c0392b; }
+    .flavor-thumb {
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+      background: radial-gradient(circle at 40% 35%, #d4a44c 0%, #c8962e 25%, #b5430a 50%, #8b2500 75%, #5a1500 100%);
+      position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .flavor-thumb::before {
+      content: ''; position: absolute; inset: 6px; border-radius: 50%;
+      background: radial-gradient(ellipse at 45% 40%, #f0c040 0%, #e8a820 40%, #c07818 70%, transparent 100%);
+      opacity: 0.85;
+    }
+    .flavor-thumb::after {
+      content: ''; position: absolute; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--topping-color, #8b2500);
+      top: 13px; left: 17px;
+      box-shadow: 11px 8px 0 var(--topping-color, #8b2500),
+                  -3px 15px 0 var(--topping-color, #8b2500),
+                  15px -1px 0 var(--topping-color, #8b2500);
+    }
+    .flavor-info { flex: 1; min-width: 0; }
+    .flavor-num-name { font-family: 'Lato', sans-serif; font-size: 0.95rem; font-weight: 700; color: #f0f0f0; }
+    .flavor-num-name .num { color: #c0392b; }
+    .flavor-desc-line { font-size: 0.74rem; color: #666; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .flavor-price { font-family: 'Lato', sans-serif; font-size: 0.95rem; font-weight: 700; color: #e67e22; flex-shrink: 0; }
+    .flavor-close {
+      margin: 14px 18px 0; flex-shrink: 0; width: calc(100% - 36px);
+      background: #27ae60; color: #fff; border: none; border-radius: 30px;
+      padding: 14px; font-family: 'Lato', sans-serif; font-weight: 700;
+      font-size: 0.95rem; cursor: pointer;
+    }
+
+    /* ── Borda picker ── */
+    .borda-picker { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 100; align-items: flex-end; justify-content: center; }
+    .borda-picker.open { display: flex; }
+    .borda-option { padding: 14px 16px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: background 0.15s; display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .borda-option:hover { background: #2a2a2a; }
+    .borda-option.selected { border-color: #c0392b; background: #2a1010; }
+    .borda-name { font-size: 0.95rem; font-weight: 600; }
+    .borda-price { font-size: 0.9rem; color: #e67e22; font-weight: 700; }
+
+@media (max-width:480px){
+  .selected-flavor-edit{
+    font-size:0;
+  }
+
+  .selected-flavor-edit::before{
+    content:"✎";
+    font-size:14px;
+  }
+}

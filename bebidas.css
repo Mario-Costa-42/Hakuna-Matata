@@ -1,0 +1,171 @@
+/* --- MODERN DESIGN THEME --- */
+        :root {
+            /* Using a refreshing blue/teal for drinks, or keep orange to match brand. 
+               Let's stick to the previous orange for brand consistency. */
+            --primary-color: #d35400; 
+            --bg-color: #96001D;
+            --card-bg: #96001D;
+            --text-dark: #fbfdff;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding-bottom: 100px; /* Space for fixed button */
+            color: var(--text-dark);
+        }
+
+        /* Header Styling */
+        header {
+            background: var(--card-bg);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        #home {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        h1 {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Container & Grid */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* Category Sub-headers */
+        h3.category-title {
+            font-size: 1.1rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        /* Product Cards */
+        .item-card {
+            background-color: #030708;
+            border-radius: var(--radius);
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .item-info {
+            flex-grow: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .item-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            display: block;
+            margin-top: 8px;
+        }
+
+        /* Quantity Controls */
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            background: #B72925;
+            border-radius: 20px;
+            padding: 5px;
+        }
+
+        .quantity-control button {
+            background-color: #030708;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .quantity-control span {
+            width: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Fixed Cart Button */
+        .cart-bar {
+            /* position: fixed; */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            /* background: var(--card-bg); */
+            /* padding: 15px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            box-sizing: border-box; */
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-carrinho {
+            background: #006400;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            max-width: 500px;
+            transition: background 0.3s;
+        }
+
+        /* .btn-carrinho:hover {
+            background: #a04000;
+        } */
