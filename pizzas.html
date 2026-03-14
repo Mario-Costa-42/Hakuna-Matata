@@ -20,10 +20,9 @@
     <div class="section-label">
       <h2 style="text-align: center;">Tamanho</h2>
     </div>
-    <select class="size-select" id="sizeSelect" onchange="updatePrice()">
-      <option value="Pequena" data-price-base="29.90">PIZZA PEQUENA – 6 FATIAS 25CM</option>
-      <option value="Média"   data-price-base="39.90" selected>PIZZA GRANDE – 8 FATIAS 35CM</option>
-      <option value="Grande"  data-price-base="49.90">PIZZA FAMÍLIA – 12 FATIAS 45CM</option>
+    <select class="size-select" id="sizeSelect" onchange="updatePrice(); updateSelectedFlavorsBox();">
+      <option value="Média"   data-price-base="0.00" selected>Média (30cm, 6 fatias)</option>
+      <option value="Grande"  data-price-base="0.00">Grande (35cm, 8 fatias)</option>
     </select>
 
     <div class="sabores-row">

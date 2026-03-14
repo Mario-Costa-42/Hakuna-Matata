@@ -1,14 +1,96 @@
 const FLAVORS = [
-      { id: 0, nome: "Mussarela",         desc: "Molho de Tomate, Mussarela",                             price: 39.90, topping: "#f5e642" },
-      { id: 1, nome: "Alho e Óleo",        desc: "Molho, Mussarela ao Alho",                               price: 41.90, topping: "#c8b400" },
-      { id: 2, nome: "Napolitana",         desc: "Mussarela, Parmesão, Tomates em Rodelas",                price: 41.90, topping: "#e03030" },
-      { id: 3, nome: "Margherita",         desc: "Manjericão Fresco, Mussarela, Tomate",                   price: 41.90, topping: "#2db350" },
-      { id: 4, nome: "Dois Queijos",       desc: "Mussarela, Requeijão Cremoso",                           price: 41.90, topping: "#f0c040" },
-      { id: 5, nome: "Quatro Queijos",     desc: "Mussarela, Provolone, Parmesão, Catupiry",               price: 45.90, topping: "#e8b800" },
-      { id: 6, nome: "Calabresa",          desc: "Molho de tomate, mussarela, calabresa e cebola",         price: 41.90, topping: "#8b1a1a" },
-      { id: 7, nome: "Portuguesa",         desc: "Presunto, ovos, cebola, azeitona, ervilha e muçarela",   price: 41.90, topping: "#d4a010" },
-      { id: 8, nome: "Frango c/ Catupiry", desc: "Mussarela, frango desfiado e catupiry",                  price: 43.90, topping: "#f5f0d0" },
-    ];
+  { 
+    id: 0, 
+    nome: "Mussarela", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, azeitona.", 
+    prices: {"Média": 45.90, "Grande": 55.90 }, // Unique prices
+    topping: "#8b1a1a"
+  },
+  { 
+    id: 1, 
+    nome: "Marguerita", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, tomate, manjericão.", 
+    prices: {"Média": 46.90, "Grande": 56.90 }, // No fixed pattern
+    topping: "#8b1a1a" 
+  },
+  { 
+    id: 2, 
+    nome: "Calabresa", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, calabresa, azeitona, cebola.", 
+    prices: {"Média": 51.90, "Grande": 62.90 }, // No fixed pattern
+    topping: "#8b1a1a" 
+  },
+  { 
+    id: 3, 
+    nome: "Alho", 
+    desc: "Massa fina, molho de tomate, mussarela, alho fatiado, alho frito, catupiry, azeitona e orégano.", 
+    prices: {"Média": 53.90, "Grande": 64.90 }, // Unique prices
+    topping: "#8b1a1a"  
+  },
+  { 
+    id: 4, 
+    nome: "4 Queijos", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, queijo parmesão, cheddar cremoso, catupiry.", 
+    prices: {"Média": 57.90, "Grande": 69.90 }, // Unique prices
+    topping: "#8b1a1a"  
+  },
+  { 
+    id: 5, 
+    nome: "Americana", 
+    desc: "Massa fina, molho de tomate, mussarela, presunto, bacon, cebola ovo e orégano.", 
+    prices: {"Média": 59.90, "Grande": 71.90 }, // Unique prices
+    topping: "#8b1a1a"  
+  },
+  { 
+    id: 6, 
+    nome: "Bacon Cheddar", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela,  bacon, cebola, milho, cheddar.", 
+    prices: {"Média": 61.90, "Grande": 74.90 }, // Unique prices
+    topping: "#8b1a1a" 
+  },
+  { 
+    id: 7, 
+    nome: "Frango Catupiry", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, frango desfiado, milho, tomate, catupiry.", 
+    prices: {"Média": 61.90, "Grande": 74.90 }, // Unique prices
+    topping: "#8b1a1a" 
+  },
+  { 
+    id: 8, 
+    nome: "Bacon Brócolis", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, bacon, brócolis, ovo, catupiry e alho frito.", 
+    prices: {"Média": 63.90, "Grande": 76.90 }, // Unique prices
+    topping: "#8b1a1a"  
+  },
+  { 
+    id: 9, 
+    nome: "5 queijos", 
+    desc: "Massa fina, molho de tomate, mussarela, parmesão, provolone, cheddar, catupiry e orégano.", 
+    prices: {"Média": 63.90, "Grande": 76.90 }, // Unique prices
+    topping: "#8b1a1a"  
+  },
+  { 
+    id: 10, 
+    nome: "Palmito Carupiry", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, tomate, palmito, catupiry, azeitona e alho frito.", 
+    prices: {"Média": 63.90, "Grande": 76.90 }, // Unique prices
+    topping: "#8b1a1a" 
+  },
+  { 
+    id: 11, 
+    nome: "Portuguesa", 
+    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, presunto, calabresa, cebola, ovo cozido, tomate, ervilha, milho e azeitona.", 
+    prices: {"Média": 65.90, "Grande": 79.90 }, // Unique prices
+    topping: "#8b1a1a" 
+  },
+  { 
+    id: 12, 
+    nome: "Pizza da Casa", 
+    desc: "Massa fina, molho de tomate, mussarela, frango, milho, bacon, cebola, cheddar, catupiry e orégano.", 
+    prices: {"Média": 67.90, "Grande": 81.90 }, // Unique prices
+    topping: "#8b1a1a" 
+  },
+];
 
     const BORDAS = [
       { id: 0, nome: "Sem borda",  price: 0    },
@@ -177,22 +259,25 @@ const FLAVORS = [
     }
 
     // ── Flavor picker ─────────────────────────────────────────
-    function renderFlavorList(query) {
-      const slot = currentSlot;
-      const list = query
-        ? FLAVORS.filter(f => f.nome.toLowerCase().includes(query.toLowerCase()) || f.desc.toLowerCase().includes(query.toLowerCase()))
-        : FLAVORS;
-      document.getElementById('flavorList').innerHTML = list.map(f => `
-        <div class="flavor-option ${chosenFlavors[slot] === f.id ? 'selected' : ''}" onclick="selectFlavor(${f.id})">
-          <div class="flavor-thumb" style="--topping-color:${f.topping}"></div>
-          <div class="flavor-info">
-            <div class="flavor-num-name"><span class="num">${String(f.id + 1).padStart(2, '0')}-</span>${f.nome.toUpperCase()}</div>
-            <div class="flavor-desc-line">${f.desc}</div>
-          </div>
-          <div class="flavor-price">R$ ${f.price.toFixed(2).replace('.', ',')}</div>
-        </div>
-      `).join('');
-    }
+function renderFlavorList(query) {
+  const slot = currentSlot;
+  const selectedSize = document.getElementById('sizeSelect').value;
+  
+  const list = query
+    ? FLAVORS.filter(f => f.nome.toLowerCase().includes(query.toLowerCase()) || f.desc.toLowerCase().includes(query.toLowerCase()))
+    : FLAVORS;
+
+  document.getElementById('flavorList').innerHTML = list.map(f => `
+    <div class="flavor-option ${chosenFlavors[slot] === f.id ? 'selected' : ''}" onclick="selectFlavor(${f.id})">
+      <div class="flavor-thumb" style="--topping-color:${f.topping}"></div>
+      <div class="flavor-info">
+        <div class="flavor-num-name"><span class="num">${String(f.id + 1).padStart(2, '0')}-</span>${f.nome.toUpperCase()}</div>
+        <div class="flavor-desc-line">${f.desc}</div>
+      </div>
+      <div class="flavor-price">R$ ${f.prices[selectedSize].toFixed(2).replace('.', ',')}</div>
+    </div>
+  `).join('');
+}
 
     function filterFlavors() { renderFlavorList(document.getElementById('flavorSearch').value); }
 
@@ -205,29 +290,51 @@ const FLAVORS = [
       document.getElementById('flavorPicker').classList.add('open');
     }
 
-    function updateSelectedFlavorsBox() {
-      const box  = document.getElementById('selectedFlavorsBox');
-      const list = document.getElementById('selectedFlavorsList');
-      const any  = chosenFlavors.some(id => id !== null);
-      box.style.display = any ? 'block' : 'none';
-      list.innerHTML = chosenFlavors.map((id, slot) => {
-        if (id === null) return '';
-        const f = FLAVORS[id];
-        const label = numSabores === 1 ? 'INTEIRA' : `METADE ${slot + 1}`;
-        return `
-          <div class="selected-flavor-card">
+function updateSelectedFlavorsBox() {
+  const box  = document.getElementById('selectedFlavorsBox');
+  const list = document.getElementById('selectedFlavorsList');
+  const sel  = document.getElementById('sizeSelect');
+  const selectedSize = sel.value; // Get "Pequena", "Média", or "Grande"
+  const any  = chosenFlavors.some(id => id !== null);
+  
+  box.style.display = any ? 'block' : 'none';
+  
+  list.innerHTML = chosenFlavors.map((id, slot) => {
+    if (id === null) return '';
+    const f = FLAVORS[id];
+    const label = numSabores === 1 ? 'INTEIRA' : `METADE ${slot + 1}`;
+    
+    // Get price based on the current selected size
+    const currentPrice = f.prices[selectedSize];
+
+    // Clever Ingredient Logic: Split description by comma into tags
+    const ingredientsTags = f.desc.split(',').map(item => 
+      `<span class="ingredient-tag">${item.trim()}</span>`
+    ).join('');
+
+    return `
+      <div class="selected-flavor-card">
+        <div class="flavor-card-main" style="width: 100%;">
+          <div class="flavor-card-top" style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
             <span class="selected-half-badge">${label}</span>
-            <div class="selected-flavor-thumb" style="--topping-color:${f.topping}"></div>
-            <div class="selected-flavor-text">
-              <div class="selected-flavor-name">${f.nome}</div>
-              <div class="selected-flavor-desc">${f.desc}</div>
-            </div>
-            <span class="selected-flavor-price">R$ ${f.price.toFixed(2).replace('.', ',')}</span>
-            <button class="selected-flavor-edit" onclick="openFlavor(${slot})">✎ trocar</button>
-            <button class="selected-flavor-remove" onclick="removeFlavor(${slot})">✕</button>
-          </div>`;
-      }).join('');
-    }
+            <span class="selected-flavor-name" style="flex: 1; font-weight: 700;">${f.nome}</span>
+            <span class="selected-flavor-price" style="color: #e67e22; font-weight: 700;">
+              R$ ${currentPrice.toFixed(2).replace('.', ',')}
+            </span>
+          </div>
+          
+          <div class="ingredients-container" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0;">
+            ${ingredientsTags}
+          </div>
+          
+          <div class="flavor-card-actions" style="display: flex; gap: 8px; border-top: 1px solid #222; padding-top: 10px;">
+            <button class="selected-flavor-edit" onclick="openFlavor(${slot})">✎ Trocar</button>
+            <button class="selected-flavor-remove" onclick="removeFlavor(${slot})">✕ Remover</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
 
     function removeFlavor(slot) {
       chosenFlavors[slot] = null;
@@ -273,28 +380,63 @@ const FLAVORS = [
     function closeBorda() { document.getElementById('bordaPicker').classList.remove('open'); }
 
     // ── Price ─────────────────────────────────────────────────
-    function updatePrice() {
-      const picked = chosenFlavors.filter(id => id != null).map(id => FLAVORS[id].price);
-      // const total  = (picked.length ? Math.max(...picked) : 0) + BORDAS[chosenBorda].price;
-      const total = (picked.length ? Math.max(...picked) : 0);
-      document.getElementById('priceDisplay').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
-    }
+function updatePrice() {
+  const sel = document.getElementById('sizeSelect');
+  const selectedSize = sel.value; // "Pequena", "Média", or "Grande"
+  
+  const pickedFlavors = chosenFlavors.filter(id => id !== null);
+
+  if (pickedFlavors.length === 0) {
+    // If no flavors are picked, show the base price from the <option> tag
+    const basePrice = parseFloat(sel.options[sel.selectedIndex].getAttribute('data-price-base'));
+    document.getElementById('priceDisplay').textContent = 'R$ ' + basePrice.toFixed(2).replace('.', ',');
+    return;
+  }
+
+  // Logic: The pizza price is the price of the most expensive flavor for THAT specific size
+  const flavorPrices = pickedFlavors.map(id => FLAVORS[id].prices[selectedSize]);
+  const total = Math.max(...flavorPrices);
+
+  document.getElementById('priceDisplay').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+}
 
     // ── Carrinho ──────────────────────────────────────────────
-    function adicionarCarrinho() {
-      if (!chosenFlavors.every(f => f != null)) { alert('Por favor, escolha todos os sabores!'); return; }
-      const sel     = document.getElementById('sizeSelect');
-      const tamanho = sel.options[sel.selectedIndex].text;
-      const nomes   = chosenFlavors.map(id => FLAVORS[id].nome).join(' / ');
-      // const preco   = Math.max(...chosenFlavors.map(id => FLAVORS[id].price)) + BORDAS[chosenBorda].price;
-      const preco = Math.max(...chosenFlavors.map(id => FLAVORS[id].price));
-      let carrinho  = JSON.parse(localStorage.getItem('carrinho')) || [];
-      const editIndex = localStorage.getItem('editarIndex');
-      if (editIndex !== null) { carrinho.splice(editIndex, 1); localStorage.removeItem('editarIndex'); }
-      carrinho.push({ produto: 'Pizza', nome: nomes, tamanho, borda: BORDAS[chosenBorda].nome, quantidade: 1, preco, subtotal: preco });
-      localStorage.setItem('carrinho', JSON.stringify(carrinho));
-      window.location.href = 'carrinho.html';
-    }
+function adicionarCarrinho() {
+  if (!chosenFlavors.every(f => f != null)) { 
+    alert('Por favor, escolha todos os sabores!'); 
+    return; 
+  }
+
+  const sel = document.getElementById('sizeSelect');
+  const selectedSize = sel.value; // "Pequena", "Média", or "Grande"
+  const tamanhoTexto = sel.options[sel.selectedIndex].text;
+  
+  const nomes = chosenFlavors.map(id => FLAVORS[id].nome).join(' / ');
+  
+  // Logic: Use the most expensive flavor price for the selected size
+  const preco = Math.max(...chosenFlavors.map(id => FLAVORS[id].prices[selectedSize]));
+
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  const editIndex = localStorage.getItem('editarIndex');
+  
+  if (editIndex !== null) { 
+    carrinho.splice(editIndex, 1); 
+    localStorage.removeItem('editarIndex'); 
+  }
+
+  carrinho.push({ 
+    produto: 'Pizza', 
+    nome: nomes, 
+    tamanho: tamanhoTexto, 
+    borda: BORDAS[chosenBorda].nome, 
+    quantidade: 1, 
+    preco: preco, 
+    subtotal: preco 
+  });
+
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  window.location.href = 'carrinho.html';
+}
 
     // ── Init ──────────────────────────────────────────────────
     rebuildPizzaHalves();

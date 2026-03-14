@@ -305,3 +305,50 @@
     font-size:14px;
   }
 }
+
+/* Container for the tags */
+.ingredients-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+/* The clever ingredient tags */
+.ingredient-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eee;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  text-transform: capitalize;
+  transition: all 0.2s;
+}
+
+.ingredient-tag:hover {
+  background: #c0392b;
+  border-color: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Adjusting the card layout for better spacing */
+.selected-flavor-card {
+  flex-direction: column; /* Stack vertically for better tag room */
+  align-items: stretch;
+}
+
+.flavor-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.flavor-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 5px;
+  border-top: 1px solid #222;
+  padding-top: 10px;
+}
