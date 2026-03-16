@@ -1,94 +1,38 @@
 const FLAVORS = [
   { 
     id: 0, 
-    nome: "Mussarela", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, azeitona.", 
-    prices: {"Média": 45.90, "Grande": 55.90 }, // Unique prices
-    topping: "#8b1a1a"
+    nome: "Pizza Brigadeiro", 
+    desc: "Brigadeiro , granulado", 
+    prices: {"Média": 45.00}, // Unique prices
+    topping: "#1E120B"
   },
   { 
     id: 1, 
-    nome: "Marguerita", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, tomate, manjericão.", 
-    prices: {"Média": 46.90, "Grande": 56.90 }, // No fixed pattern
-    topping: "#8b1a1a" 
+    nome: "Pizza Beijinho", 
+    desc: "Beijinho de coco", 
+    prices: {"Média": 45.00}, // No fixed pattern
+    topping: "#1E120B"
   },
   { 
     id: 2, 
-    nome: "Calabresa", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, calabresa, azeitona, cebola.", 
-    prices: {"Média": 51.90, "Grande": 62.90 }, // No fixed pattern
-    topping: "#8b1a1a" 
+    nome: "Pizza Romeu e Julieta", 
+    desc: "Mussarela, goiabada , canela", 
+    prices: {"Média": 47.00 }, // No fixed pattern
+    topping: "#1E120B" 
   },
   { 
     id: 3, 
-    nome: "Alho", 
-    desc: "Massa fina, molho de tomate, mussarela, alho fatiado, alho frito, catupiry, azeitona, orégano.", 
-    prices: {"Média": 53.90, "Grande": 64.90 }, // Unique prices
-    topping: "#8b1a1a"  
+    nome: "Pizza Prestígio", 
+    desc: "Beijinho , gotas de chocolate", 
+    prices: {"Média": 47.00}, // Unique prices
+    topping: "#1E120B"  
   },
   { 
     id: 4, 
-    nome: "4 Queijos", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, queijo parmesão, cheddar cremoso, catupiry.", 
-    prices: {"Média": 57.90, "Grande": 69.90 }, // Unique prices
-    topping: "#8b1a1a"  
-  },
-  { 
-    id: 5, 
-    nome: "Americana", 
-    desc: "Massa fina, molho de tomate, mussarela, presunto, bacon, cebola, ovo, orégano.", 
-    prices: {"Média": 59.90, "Grande": 71.90 }, // Unique prices
-    topping: "#8b1a1a"  
-  },
-  { 
-    id: 6, 
-    nome: "Bacon Cheddar", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela,  bacon, cebola, milho, cheddar.", 
-    prices: {"Média": 61.90, "Grande": 74.90 }, // Unique prices
-    topping: "#8b1a1a" 
-  },
-  { 
-    id: 7, 
-    nome: "Frango Catupiry", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, frango desfiado, milho, tomate, catupiry.", 
-    prices: {"Média": 61.90, "Grande": 74.90 }, // Unique prices
-    topping: "#8b1a1a" 
-  },
-  { 
-    id: 8, 
-    nome: "Bacon Brócolis", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, bacon, brócolis, ovo, catupiry, alho frito.", 
-    prices: {"Média": 63.90, "Grande": 76.90 }, // Unique prices
-    topping: "#8b1a1a"  
-  },
-  { 
-    id: 9, 
-    nome: "5 queijos", 
-    desc: "Massa fina, molho de tomate, mussarela, parmesão, provolone, cheddar, catupiry, orégano.", 
-    prices: {"Média": 63.90, "Grande": 76.90 }, // Unique prices
-    topping: "#8b1a1a"  
-  },
-  { 
-    id: 10, 
-    nome: "Palmito Carupiry", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, tomate, palmito, catupiry, azeitona, alho frito.", 
-    prices: {"Média": 63.90, "Grande": 76.90 }, // Unique prices
-    topping: "#8b1a1a" 
-  },
-  { 
-    id: 11, 
-    nome: "Portuguesa", 
-    desc: "Massa fina, molho de tomate, orégano, queijo mussarela, presunto, calabresa, cebola, ovo cozido, tomate, ervilha, milho, azeitona.", 
-    prices: {"Média": 65.90, "Grande": 79.90 }, // Unique prices
-    topping: "#8b1a1a" 
-  },
-  { 
-    id: 12, 
-    nome: "Pizza da Casa", 
-    desc: "Massa fina, molho de tomate, mussarela, frango, milho, bacon, cebola, cheddar, catupiry, orégano.", 
-    prices: {"Média": 67.90, "Grande": 81.90 }, // Unique prices
-    topping: "#8b1a1a" 
+    nome: "Pizza paçoquinha", 
+    desc: "Brigadeiro, paçoquinha, cereja, gotas de chocolate", 
+    prices: {"Média": 49.00}, // Unique prices
+    topping: "#1E120B"  
   },
 ];
 

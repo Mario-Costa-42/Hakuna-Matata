@@ -38,16 +38,6 @@ function descricaoItem(item) {
     return `${item.nome} x${item.quantidade} = R$ ${brl(item.subtotal)}`;
   }
 
-  // HAMBÚRGUER
-  if (item.produto === "Hambúrguer") {
-    return `${item.nome} x${item.quantidade} = R$ ${brl(item.subtotal)}`;
-  }
-
-  // ACOMPANHAMENTO
-  if (item.produto === "Acompanhamento") {
-    return `${item.nome} x${item.quantidade} = R$ ${brl(item.subtotal)}`;
-  }
-
   // BEBIDAS
   if (item.produto === "Bebidas") {
     return `${item.nome} x${item.quantidade} = R$ ${brl(item.subtotal)}`;
@@ -139,10 +129,6 @@ function editarItem(index) {
 
   if (item.produto === "Pizza") {
     window.location.href = "pizzas.html";
-  } else if (item.produto === "Hambúrguer") {
-    window.location.href = "hamburguer.html";
-  } else if (item.produto === "Acompanhamento") {
-    window.location.href = "acompanhamentos.html";
   } else if (item.produto === "Bebidas") {
     window.location.href = "bebidas.html";
   } else {
