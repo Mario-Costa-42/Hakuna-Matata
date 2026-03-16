@@ -154,6 +154,8 @@ function removerItem(index) {
 function mostrarOpcaoPagamento() {
   const opcao = document.getElementById("pagamento").value;
   document.getElementById("pixInfo").style.display = (opcao === "pix") ? "block" : "none";
+  document.getElementById("debitoInfo").style.display = (opcao === "debito") ? "block" : "none";
+  document.getElementById("creditoInfo").style.display = (opcao === "credito") ? "block" : "none";
   document.getElementById("dinheiroInfo").style.display = (opcao === "dinheiro") ? "block" : "none";
 }
 
@@ -173,12 +175,16 @@ function enviarWhatsapp() {
   } else if (pagamento === "dinheiro") {
     const troco = document.getElementById("troco").value;
     textoPagamento = `\nForma de pagamento: Dinheiro ✅ ${troco ? "(Troco para R$" + troco + ")" : ""}`;
+  } else if (pagamento === "debito") {
+    textoPagamento = "\nForma de pagamento: Débito ✅";
+  } else if (pagamento === "credito") {
+    textoPagamento = "\nForma de pagamento: Crédito ✅";
   } else {
     textoPagamento = "\nForma de pagamento: Não informado ⚠️";
   }
 
   const textoFinal = "📋 Pedido:\n" + resumo + textoPagamento;
-  const numero = "5532984923417"; 
+  const numero = "5524992850843"; 
   const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(textoFinal);
   window.location.href = url;
   localStorage.clear();

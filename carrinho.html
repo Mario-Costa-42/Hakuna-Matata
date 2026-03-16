@@ -31,6 +31,8 @@
     <select id="pagamento" onchange="mostrarOpcaoPagamento()">
       <option value="">Selecione...</option>
       <option value="pix">Pix</option>
+      <option value="debito">Débito</option>
+      <option value="credito">Crédito</option>
       <option value="dinheiro">Dinheiro</option>
     </select>
 
@@ -40,6 +42,14 @@
       <br><br>
       <button id="textCopyPix" onclick="copiarPix()">📋 Copiar Chave Pix</button>
     </div>  
+
+    <div id="debitoInfo" style="display:none; margin-top:10px;">
+      <p style="color:white;">Você pagará com cartão de débito na entrega.</p>
+    </div>
+
+    <div id="creditoInfo" style="display:none; margin-top:10px;">
+      <p style="color:white;">Você pagará com cartão de crédito na entrega.</p>
+    </div>
 
     <div id="dinheiroInfo" style="display:none; margin-top:10px;">
       <label style="color: white;">Vai precisar de troco?</label>

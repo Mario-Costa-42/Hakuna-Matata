@@ -61,7 +61,7 @@ button { padding: 12px 20px; margin: 5px; cursor: pointer; border: none; border-
   margin-right: auto;
 }
 
-#dinheiroInfo,#pixInfo{
+#dinheiroInfo,#pixInfo,#debitoInfo,#creditoInfo{
   text-align: center;
 }
 
