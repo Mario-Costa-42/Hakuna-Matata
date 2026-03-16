@@ -160,7 +160,7 @@ function mostrarOpcaoPagamento() {
 }
 
 function copiarPix() {
-  const chavePix = "teste_exemplo";
+  const chavePix = "24992850843";
   navigator.clipboard.writeText(chavePix);
   alert("Chave Pix copiada!");
 }
