@@ -410,35 +410,71 @@ function adicionarCarrinho() {
   }
 
   const sel = document.getElementById('sizeSelect');
-  const selectedSize = sel.value; // "Pequena", "Média", or "Grande"
-  const tamanhoTexto = sel.options[sel.selectedIndex].text;
+  const sizeValue = sel.value; // "Pequena", "Média", etc.
+  const sizeText = sel.options[sel.selectedIndex].text;
   
   const nomes = chosenFlavors.map(id => FLAVORS[id].nome).join(' / ');
-  
-  // Logic: Use the most expensive flavor price for the selected size
-  const preco = Math.max(...chosenFlavors.map(id => FLAVORS[id].prices[selectedSize]));
+  const preco = Math.max(...chosenFlavors.map(id => FLAVORS[id].prices[sizeValue]));
 
   let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   const editIndex = localStorage.getItem('editarIndex');
-  
-  if (editIndex !== null) { 
-    carrinho.splice(editIndex, 1); 
-    localStorage.removeItem('editarIndex'); 
-  }
 
-  carrinho.push({ 
+  // If editing, we replace the item at the specific index
+  const pizzaItem = { 
     produto: 'Pizza', 
     nome: nomes, 
-    tamanho: tamanhoTexto, 
-    borda: BORDAS[chosenBorda].nome, 
+    tamanho: sizeText, 
+    sizeValue: sizeValue,       // <--- SAVE THIS
+    flavorIds: [...chosenFlavors], // <--- SAVE THIS
     quantidade: 1, 
     preco: preco, 
     subtotal: preco 
-  });
+  };
+
+  if (editIndex !== null) { 
+    carrinho[parseInt(editIndex)] = pizzaItem; // Overwrite the existing item
+    localStorage.removeItem('editarIndex'); 
+  } else {
+    carrinho.push(pizzaItem); // Add new
+  }
 
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
   window.location.href = 'carrinho.html';
 }
+
+function checkEditMode() {
+  const editIndex = localStorage.getItem('editarIndex');
+  if (editIndex === null) return;
+
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  const item = carrinho[parseInt(editIndex)];
+
+  if (item && item.produto === 'Pizza') {
+    // 1. Restore the size
+    const sel = document.getElementById('sizeSelect');
+    sel.value = item.sizeValue;
+
+    // 2. Restore the flavor count and IDs
+    numSabores = item.flavorIds.length;
+    chosenFlavors = [...item.flavorIds];
+
+    // 3. Update the UI labels and graphics
+    document.getElementById('saboresLabel').textContent =
+      numSabores + (numSabores === 1 ? ' SABOR' : ' SABORES');
+
+    // 4. Refresh everything
+    rebuildPizzaHalves();
+    updateSelectedFlavorsBox();
+    updatePrice();
+    
+    // 5. Change button text to show we are updating
+    const addBtn = document.querySelector('.add-to-cart-btn'); // Change selector to match your button class
+    if(addBtn) addBtn.textContent = "ATUALIZAR PIZZA";
+  }
+}
+
+// Call this when the page loads
+document.addEventListener('DOMContentLoaded', checkEditMode);
 
     // ── Init ──────────────────────────────────────────────────
     rebuildPizzaHalves();

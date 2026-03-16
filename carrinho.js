@@ -38,6 +38,11 @@ function descricaoItem(item) {
     return `${item.nome} x${item.quantidade} = R$ ${brl(item.subtotal)}`;
   }
 
+  // PIZZA DOCE
+  if (item.produto === "Pizza Doce") {
+    return `${item.nome} x${item.quantidade} = R$ ${brl(item.subtotal)}`;
+  }
+
   // BEBIDAS
   if (item.produto === "Bebidas") {
     return `${item.nome} x${item.quantidade} = R$ ${brl(item.subtotal)}`;
@@ -129,6 +134,8 @@ function editarItem(index) {
 
   if (item.produto === "Pizza") {
     window.location.href = "pizzas.html";
+  } else if (item.produto === "Pizza Doce") {
+    window.location.href = "pizzasDoces.html";
   } else if (item.produto === "Bebidas") {
     window.location.href = "bebidas.html";
   } else {
